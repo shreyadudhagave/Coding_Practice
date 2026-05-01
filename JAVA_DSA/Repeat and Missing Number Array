@@ -1,0 +1,47 @@
+https://www.interviewbit.com/problems/repeat-and-missing-number-array/
+
+import java.util.*;
+
+public class Solution {
+    // DO NOT MODIFY THE LIST. IT IS READ ONLY
+    public ArrayList<Integer> repeatedNumber(final List<Integer> A) {
+        
+        long n = A.size();
+        
+        // Expected sum of 1 to n
+        long sumN = (n * (n + 1)) / 2;
+        
+        // Expected square sum of 1 to n
+        long squareSumN = (n * (n + 1) * (2 * n + 1)) / 6;
+        
+        long actualSum = 0;
+        long actualSquareSum = 0;
+        
+        // Calculate actual sums
+        for (int num : A) {
+            actualSum += num;
+            actualSquareSum += (long) num * num;
+        }
+        
+        // A - B
+        long diff = actualSum - sumN;
+        
+        // A^2 - B^2
+        long squareDiff = actualSquareSum - squareSumN;
+        
+        // A + B
+        long sum = squareDiff / diff;
+        
+        // Repeated number
+        long repeated = (diff + sum) / 2;
+        
+        // Missing number
+        long missing = sum - repeated;
+        
+        ArrayList<Integer> result = new ArrayList<>();
+        result.add((int) repeated);
+        result.add((int) missing);
+        
+        return result;
+    }
+}
