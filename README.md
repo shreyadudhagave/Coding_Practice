@@ -1,2 +1,2 @@
 # Coding_Practice
-Dailt practice problems
+Daily practice problems.
